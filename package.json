@@ -25,6 +25,7 @@
     "@prisma/client": "^4.2.1",
     "apollo-server": "^3.10.1",
     "cuid": "^2.1.8",
+    "dataloader": "^2.1.0",
     "graphql": "^16.5.0",
     "graphql-import-files": "^1.0.18",
     "nodemon": "^2.0.19",

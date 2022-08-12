@@ -1,5 +1,5 @@
 import { GraphQLResolveInfo } from 'graphql';
-import { MPost } from 'mapper';
+import { MPost, MComment } from 'mapper';
 import { Context } from 'types/context';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -111,7 +111,7 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
-  Comment: ResolverTypeWrapper<Comment>;
+  Comment: ResolverTypeWrapper<MComment>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
   Post: ResolverTypeWrapper<MPost>;
   Query: ResolverTypeWrapper<{}>;
@@ -122,7 +122,7 @@ export type ResolversTypes = {
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
   Boolean: Scalars['Boolean'];
-  Comment: Comment;
+  Comment: MComment;
   Int: Scalars['Int'];
   Post: MPost;
   Query: {};

@@ -7,6 +7,7 @@ generates:
       contextType: types/context#Context
       mappers:
         Post: 'mapper#MPost'
+        Comment: 'mapper#MComment'
     plugins:
       - 'typescript'
       - 'typescript-resolvers'

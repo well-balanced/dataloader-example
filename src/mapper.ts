@@ -7,3 +7,8 @@ export type MPost = Optional<
   }>,
   keyof Prisma.PostInclude
 >
+
+export type MComment = Optional<
+  Prisma.CommentGetPayload<{ include: { user: true, post: true } }>,
+  keyof Prisma.CommentInclude
+>
