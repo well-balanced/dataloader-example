@@ -1,5 +1,4 @@
 import { PrismaClient } from '@prisma/client'
-import cuid from 'cuid'
 
 const prisma = new PrismaClient()
 
@@ -7,17 +6,17 @@ async function main() {
   const user = await prisma.user.create({ data: { name: 'well-balanced' } })
 
   const promises = Array.from({ length: 10 }).map(
-    async () =>
+    async (_, idx) =>
       await prisma.post.create({
         data: {
-          title: cuid(),
-          content: cuid(),
+          title: `title ${idx + 1}`,
+          content: `content ${idx + 1}`,
           userId: user.id,
-          Comment: {
+          comments: {
             createMany: {
               data: Array.from({ length: 10 }).map(() => ({
                 userId: user.id,
-                content: cuid(),
+                content: `content ${idx + 1}`,
               })),
             },
           },

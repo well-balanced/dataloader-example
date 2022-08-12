@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/server.ts",
-    "gqlgen": "graphql-codegen --config codegen.yml"
+    "gqlgen": "graphql-codegen --config codegen.yml",
+    "seed": "npx ts-node prisma/seed.ts",
+    "prisma:reset": "npx prisma migrate reset"
   },
   "repository": {
     "type": "git",
