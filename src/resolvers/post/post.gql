@@ -13,6 +13,7 @@ type Post {
   title: String!
   content: String!
   comments: [Comment!]!
+  user: User!
 }
 
 type Query {

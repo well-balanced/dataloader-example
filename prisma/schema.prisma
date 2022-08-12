@@ -24,7 +24,7 @@ model Post {
   createdAt DateTime  @default(now())
   user      User      @relation(fields: [userId], references: [id])
   userId    Int
-  Comment   Comment[]
+  comments  Comment[]
 }
 
 model Comment {

@@ -3,6 +3,10 @@ schema: 'src/resolvers/**/*.gql'
 documents: null
 generates:
   src/generated.ts:
+    config:
+      contextType: types/context#Context
+      mappers:
+        Post: 'mapper#MPost'
     plugins:
       - 'typescript'
       - 'typescript-resolvers'
