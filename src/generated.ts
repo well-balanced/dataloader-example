@@ -19,7 +19,6 @@ export type Comment = {
   __typename?: 'Comment';
   content: Scalars['String'];
   id: Scalars['Int'];
-  user: User;
 };
 
 export type Post = {
@@ -28,17 +27,13 @@ export type Post = {
   content: Scalars['String'];
   id: Scalars['Int'];
   title: Scalars['String'];
-  user: User;
 };
 
 export type Query = {
   __typename?: 'Query';
-  posts: Array<Post>;
-};
-
-export type User = {
-  __typename?: 'User';
-  name: Scalars['String'];
+  bestPosts: Array<Post>;
+  bestPosts2: Array<Post>;
+  latestPosts: Array<Post>;
 };
 
 
@@ -116,7 +111,6 @@ export type ResolversTypes = {
   Post: ResolverTypeWrapper<MPost>;
   Query: ResolverTypeWrapper<{}>;
   String: ResolverTypeWrapper<Scalars['String']>;
-  User: ResolverTypeWrapper<User>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
@@ -127,13 +121,11 @@ export type ResolversParentTypes = {
   Post: MPost;
   Query: {};
   String: Scalars['String'];
-  User: User;
 };
 
 export type CommentResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Comment'] = ResolversParentTypes['Comment']> = {
   content?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  user?: Resolver<ResolversTypes['User'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -142,23 +134,18 @@ export type PostResolvers<ContextType = Context, ParentType extends ResolversPar
   content?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  user?: Resolver<ResolversTypes['User'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type QueryResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  posts?: Resolver<Array<ResolversTypes['Post']>, ParentType, ContextType>;
-};
-
-export type UserResolvers<ContextType = Context, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
-  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+  bestPosts?: Resolver<Array<ResolversTypes['Post']>, ParentType, ContextType>;
+  bestPosts2?: Resolver<Array<ResolversTypes['Post']>, ParentType, ContextType>;
+  latestPosts?: Resolver<Array<ResolversTypes['Post']>, ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = Context> = {
   Comment?: CommentResolvers<ContextType>;
   Post?: PostResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
-  User?: UserResolvers<ContextType>;
 };
 

@@ -3,6 +3,7 @@ import { ApolloServer } from 'apollo-server'
 import { PrismaClient, Prisma } from '@prisma/client'
 import { resolvers, typeDefs } from './resolvers'
 import { makeExecutableSchema } from '@graphql-tools/schema'
+import { createLoaders } from './loaders'
 
 const prisma = new PrismaClient({ log: ['query'] })
 
@@ -12,10 +13,14 @@ prisma.$on<any>('query', async (e: Prisma.QueryEvent) => {
 
 const server = new ApolloServer({
   schema: makeExecutableSchema({ typeDefs, resolvers }),
-  context: ({ req }) => ({
-    prisma,
-    req,
-  }),
+  context: ({ req, res }) => {
+    return {
+      prisma,
+      req,
+      res,
+      loaders: createLoaders(prisma),
+    }
+  },
   csrfPrevention: true,
   cache: 'bounded',
   plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
